@@ -1,1121 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Software Engineer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
-        }
-
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-            animation: backgroundFloat 20s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes backgroundFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(0.5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-0.5deg); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-content .subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .hero-content .description {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            background: var(--gradient);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-
-        .about-image:hover img {
-            filter: grayscale(0%);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background: var(--bg-card);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Apps Section */
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .app-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-        }
-
-        .app-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .app-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .app-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .app-features li {
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .app-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--gradient-accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-image {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary);
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--primary);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-card);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .form-group label {
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .form-group input:focus + label,
-        .form-group input:not(:placeholder-shown) + label,
-        .form-group textarea:focus + label,
-        .form-group textarea:not(:placeholder-shown) + label {
-            top: -0.5rem;
-            left: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--primary);
-            background: var(--bg-dark);
-            padding: 0 0.5rem;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-card);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-link:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--gradient);
-            z-index: 9999;
-            transition: width 0.3s ease;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nadav Halahmi – Software Engineer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <style>
+    .app-screenshot, .project-card img, .teaching-image, .about-image img {
+      max-width: 100%;
+      height: auto;
+      border: 3px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+    .app-card img, .project-card img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+    .teaching-image {
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+    .about-image img {
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
-    <div class="scroll-indicator"></div>
-    
-    <nav>
-        <div class="nav-container">
-            <div class="logo">YourName</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Nadav</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Nadav Halahmi</h1>
+      <p class="subtitle">Software Engineer • Cybersecurity • Educator</p>
+      <p class="description">
+        I specialize in building robust applications, teaching computer science, and reverse engineering complex systems.
+      </p>
+      <div class="cta-buttons">
+        <a href="#apps" class="btn btn-primary"><i class="fas fa-mobile-alt"></i>View My Apps</a>
+        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i>Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="fade-in">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-image"><img src="images/aboutme.jpg" alt="About me" /></div>
+      <div class="about-text">
+        <p>I'm a software engineer with experience in performance optimization, reverse engineering, and education. I enjoy building tools, teaching students, and simplifying complexity.</p>
+        <div class="skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Fortran</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Smali</span>
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">OpenMP</span>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Your Name</h1>
-            <p class="subtitle">Software Engineer & Mobile Developer</p>
-            <p class="description">
-                Crafting innovative mobile applications and web solutions with cutting-edge technology. 
-                Passionate about creating user-centric experiences that make a difference.
-            </p>
-            <div class="cta-buttons">
-                <a href="#apps" class="btn btn-primary">
-                    <i class="fas fa-mobile-alt"></i>
-                    View My Apps
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-envelope"></i>
-                    Get In Touch
-                </a>
-            </div>
+  <section id="apps" class="fade-in">
+    <h2 class="section-title">My Apps</h2>
+    <div class="apps-grid">
+      <div class="app-card">
+        <img src="images/arrowords.jpg" alt="Arrowords Screenshot" class="app-screenshot">
+        <h3>Arrowords</h3>
+        <p>Language-learning app with arrowword puzzles and spaced repetition.</p>
+        <div class="app-buttons">
+          <a href="./apks/arroword_generator.apk" class="btn btn-primary" download><i class="fas fa-download"></i> APK</a>
+          <a href="https://nadavhalahmi.github.io/arrowords-web-app/" class="btn btn-secondary" target="_blank"><i class="fas fa-globe"></i> Web</a>
         </div>
-    </section>
-
-    <section id="about" class="fade-in">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-image">
-                <div style="width: 100%; height: 400px; background: var(--gradient); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
-            <div class="about-text">
-                <p>
-                    I'm a passionate software engineer with expertise in mobile app development and modern web technologies. 
-                    With over X years of experience, I specialize in creating robust Android applications and scalable web solutions.
-                </p>
-                <p>
-                    My journey in software development began with a curiosity for problem-solving and has evolved into a 
-                    career focused on building applications that enhance user experiences and solve real-world problems.
-                </p>
-                <div class="skills">
-                    <span class="skill-tag">Android Development</span>
-                    <span class="skill-tag">Kotlin</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Firebase</span>
-                    <span class="skill-tag">REST APIs</span>
-                </div>
-            </div>
+      </div>
+      <div class="app-card">
+        <img src="images/crowny.jpg" alt="Crowny Screenshot" class="app-screenshot">
+        <h3>Crowny</h3>
+        <p>A strategic board game with AI and multiplayer support.</p>
+        <p>Password for the web version - 1234</p>
+        <div class="app-buttons">
+          <a href="./apks/crowny.apk" class="btn btn-primary" download><i class="fas fa-download"></i> APK</a>
+          <a href="https://crowny-game.itch.io/crowny" class="btn btn-secondary" target="_blank"><i class="fas fa-globe"></i> Web</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="apps" class="fade-in">
-        <h2 class="section-title">My Apps</h2>
-        <div class="apps-grid">
-            <div class="app-card">
-                <div class="app-icon">
-                    <i class="fas fa-tasks"></i>
-                </div>
-                <h3>Arrowords app</h3>
-                <p>An arroword generator app with space repetition support.</p>
-                <ul class="app-features">
-                    <li>Generate your own arrowords</li>
-                    <li>Expand your vocabulary</li>
-                    <li>Space repetition</li>
-                    <li>Coming soon - upload your own word list</li>
-                </ul>
-                <a href="./apks/arroword_generator.apk" class="download-btn" download>
-                    <i class="fas fa-download"></i>
-                    Download APK
-                </a>
-            </div>
+  <section id="projects" class="fade-in">
+    <h2 class="section-title">Other Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Power Meter for Cyclists</h3>
+        <p>Hardware/software integration to estimate real-time cycling power. Winner of a national excellence award.</p>
+      </div>
+      <div class="project-card">
+        <h3>Android Static Analyzer</h3>
+        <p>A Python-based tool for reverse engineering and analyzing Android APKs statically, using Smali and IDA.</p>
+      </div>
+      <div class="project-card">
+        <h3>Realtime UDP Testing Lab</h3>
+        <p>Custom networking sandbox to simulate NAT and UDP device discovery without a VPN using iptables and tc.</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="app-card">
-                <div class="app-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>FitnessTracker</h3>
-                <p>Track your workouts, monitor progress, and achieve your fitness goals with this comprehensive app.</p>
-                <ul class="app-features">
-                    <li>Workout logging</li>
-                    <li>Progress analytics</li>
-                    <li>Custom routines</li>
-                    <li>Health integration</li>
-                </ul>
-                <a href="./apks/fitness-tracker.apk" class="download-btn" download>
-                    <i class="fas fa-download"></i>
-                    Download APK
-                </a>
-            </div>
+  <section id="teaching" class="fade-in">
+    <h2 class="section-title">Teaching</h2>
+    <div class="teaching-content">
+      <img src="images/teaching.jpg" alt="Teaching" class="teaching-image" />
+      <div class="teaching-text">
+        <p>In 2022–2023, I taught computer science at Ironi Yud-Daled High School in Tel Aviv – the same school where I studied just four years earlier. I quickly became a mentor, teacher, and big brother to 46 students across 10th and 11th grades.</p>
+        <p>Although the beginning was challenging, I developed my own teaching style and built personal connections with students. We covered the curriculum, explored enrichment topics, solved puzzles, and discussed life beyond the classroom.</p>
+        <p>This experience taught me that even one year of teaching can leave a lasting impact. I look forward to returning to education in the future, and inspiring others to join the mission of improving education in Israel.</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="app-card">
-                <div class="app-icon">
-                    <i class="fas fa-wallet"></i>
-                </div>
-                <h3>ExpenseManager</h3>
-                <p>Smart expense tracking with budget management and financial insights to help you save money.</p>
-                <ul class="app-features">
-                    <li>Expense categorization</li>
-                    <li>Budget tracking</li>
-                    <li>Financial reports</li>
-                    <li>Cloud backup</li>
-                </ul>
-                <a href="./apks/expense-manager.apk" class="download-btn" download>
-                    <i class="fas fa-download"></i>
-                    Download APK
-                </a>
-            </div>
-        </div>
-    </section>
+  <section id="contact" class="fade-in">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-content">
+      <p>I’m happy to connect about interesting projects, teaching, or collaborations. Feel free to reach out.</p>
+      <form class="contact-form">
+        <div class="form-group"><input type="text" id="name" required><label for="name">Your Name</label></div>
+        <div class="form-group"><input type="email" id="email" required><label for="email">Email Address</label></div>
+        <div class="form-group"><textarea id="message" rows="5" required></textarea><label for="message">Message</label></div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
+      </form>
+      <div class="social-links">
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:nadavhalahmi560@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects" class="fade-in">
-        <h2 class="section-title">Other Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <div class="project-content">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-stack e-commerce solution with modern UI/UX and robust backend architecture.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Stripe API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <footer>
+    <p>&copy; 2025 Nadav Halahmi. All rights reserved.</p>
+  </footer>
 
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="project-content">
-                    <h3>AI Chatbot</h3>
-                    <p>Intelligent chatbot with natural language processing capabilities for customer support.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">NLP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-                <div class="project-content">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Real-time data visualization dashboard with interactive charts and customizable widgets.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">WebSocket</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <i class="fab fa-github"></i>
-                            Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="fade-in">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
-                I'm always interested in hearing about new opportunities and exciting projects. 
-                Let's connect and discuss how we can work together!
-            </p>
-            
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder=" " required>
-                    <label for="name">Your Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder=" " required>
-                    <label for="email">Email Address</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" rows="5" placeholder=" " required></textarea>
-                    <label for="message">Message</label>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i>
-                    Send Message
-                </button>
-            </form>
-
-            <div class="social-links">
-                <a href="https://github.com/yourusername" class="social-link" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="mailto:your.email@example.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Your Name. All rights reserved. Built with passion and modern web technologies.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll progress indicator
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.scroll-indicator').style.width = scrolled + '%';
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Active navigation link highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Enhanced navbar on scroll
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            
-            if (scrollTop > 50) {
-                nav.style.background = 'rgba(15, 23, 42, 0.95)';
-                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-            } else {
-                nav.style.background = 'rgba(15, 23, 42, 0.8)';
-                nav.style.boxShadow = 'none';
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple form validation
-            if (!name || !email || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                
-                // Reset form
-                this.reset();
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                }, 3000);
-            }, 2000);
-        });
-
-        // Add some interactive hover effects for cards
-        document.querySelectorAll('.app-card, .project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add floating animation to hero elements
-        function floatingAnimation() {
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent) {
-                heroContent.style.transform = `translateY(${Math.sin(Date.now() * 0.001) * 5}px)`;
-            }
-            requestAnimationFrame(floatingAnimation);
-        }
-        floatingAnimation();
-
-        // Typing effect for hero subtitle
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.textContent = '';
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', () => {
-            const subtitle = document.querySelector('.hero-content .subtitle');
-            if (subtitle) {
-                const originalText = subtitle.textContent;
-                typeWriter(subtitle, originalText, 100);
-            }
-        });
-
-        // Add download tracking for APKs
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const appName = this.closest('.app-card').querySelector('h3').textContent;
-                console.log(`Downloaded: ${appName}`);
-                
-                // Visual feedback
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-                this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.background = '';
-                }, 2000);
-            });
-        });
-
-        // Add parallax effect to background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.body;
-            const speed = scrolled * 0.5;
-            
-            parallax.style.transform = `translateY(${speed}px)`;
-        });
-
-        // Mobile menu toggle (basic implementation)
-        const createMobileMenu = () => {
-            const nav = document.querySelector('.nav-container');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (window.innerWidth <= 768) {
-                if (!document.querySelector('.mobile-menu-btn')) {
-                    const menuBtn = document.createElement('button');
-                    menuBtn.className = 'mobile-menu-btn';
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    menuBtn.style.cssText = `
-                        background: none;
-                        border: none;
-                        color: var(--text-primary);
-                        font-size: 1.5rem;
-                        cursor: pointer;
-                        display: block;
-                    `;
-                    
-                    menuBtn.addEventListener('click', () => {
-                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                        navLinks.style.position = 'absolute';
-                        navLinks.style.top = '100%';
-                        navLinks.style.left = '0';
-                        navLinks.style.right = '0';
-                        navLinks.style.background = 'var(--bg-dark)';
-                        navLinks.style.flexDirection = 'column';
-                        navLinks.style.padding = '1rem';
-                        navLinks.style.borderTop = '1px solid rgba(255,255,255,0.1)';
-                    });
-                    
-                    nav.appendChild(menuBtn);
-                }
-            }
-        };
-
-        window.addEventListener('resize', createMobileMenu);
-        createMobileMenu();
-    </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
