@@ -6,32 +6,6 @@
   <title>Nadav Halahmi – Software Engineer</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/styles.css"/>
-  <style>
-    .app-screenshot, .project-card img, .teaching-image, .about-image img {
-      max-width: 100%;
-      height: auto;
-      border: 3px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1rem;
-    }
-    .app-card img, .project-card img {
-      width: 100%;
-      max-width: 400px;
-      display: block;
-      margin: 0 auto 1rem auto;
-    }
-    .teaching-image {
-      max-width: 500px;
-      display: block;
-      margin: 0 auto 1rem auto;
-    }
-    .about-image img {
-      max-width: 300px;
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
 </head>
 <body>
   <nav>
@@ -41,7 +15,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#apps">Apps</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <!-- <li><a href="#projects">Projects</a></li> -->
         <li><a href="#teaching">Teaching</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -106,50 +80,132 @@
     </div>
   </section>
 
-  <section id="projects" class="fade-in">
+  <!-- <section id="projects" class="fade-in">
     <h2 class="section-title">Other Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
+        <div class="project-icon">
+          <i class="fas fa-bicycle"></i>
+        </div>
         <h3>Power Meter for Cyclists</h3>
         <p>Hardware/software integration to estimate real-time cycling power. Winner of a national excellence award.</p>
+        <div class="project-tech">
+          <span class="tech-tag">C++</span>
+          <span class="tech-tag">Hardware</span>
+          <span class="tech-tag">IoT</span>
+        </div>
+        <a href="https://github.com/nadavhalahmi/moah-project-yud/tree/main" class="project-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
       </div>
       <div class="project-card">
-        <h3>Android Static Analyzer</h3>
+        <div class="project-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Cyclist speed in downheel research</h3>
         <p>A Python-based tool for reverse engineering and analyzing Android APKs statically, using Smali and IDA.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Smali</span>
+          <span class="tech-tag">Reverse Engineering</span>
+        </div>
+        <a href="https://github.com/nadavhalahmi/moah-project-yud_aleph" class="project-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
       </div>
       <div class="project-card">
+        <div class="project-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
         <h3>Realtime UDP Testing Lab</h3>
         <p>Custom networking sandbox to simulate NAT and UDP device discovery without a VPN using iptables and tc.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Networking</span>
+          <span class="tech-tag">UDP</span>
+          <span class="tech-tag">Linux</span>
+        </div>
+        <a href="https://github.com/nadavhalahmi/udp-testing-lab" class="project-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section id="teaching" class="fade-in">
     <h2 class="section-title">Teaching</h2>
-    <div class="teaching-content">
-      <img src="images/teaching.jpg" alt="Teaching" class="teaching-image" />
-      <div class="teaching-text">
-        <p>In 2022–2023, I taught computer science at Ironi Yud-Daled High School in Tel Aviv – the same school where I studied just four years earlier. I quickly became a mentor, teacher, and big brother to 46 students across 10th and 11th grades.</p>
-        <p>Although the beginning was challenging, I developed my own teaching style and built personal connections with students. We covered the curriculum, explored enrichment topics, solved puzzles, and discussed life beyond the classroom.</p>
-        <p>This experience taught me that even one year of teaching can leave a lasting impact. I look forward to returning to education in the future, and inspiring others to join the mission of improving education in Israel.</p>
+    <div class="teaching-container">
+      <div class="teaching-card">
+        <div class="teaching-header">
+          <img src="images/teaching.jpg" alt="Teaching" class="teaching-image" />
+          <div class="teaching-badge">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>2022-2023</span>
+          </div>
+        </div>
+        <div class="teaching-content">
+          <h3>Computer Science Teacher</h3>
+          <p class="teaching-school">Ironi Yud-Daled High School, Tel Aviv</p>
+          
+          <div class="teaching-stats">
+            <div class="stat">
+              <span class="stat-number">46</span>
+              <span class="stat-label">Students</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Grade Levels</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1</span>
+              <span class="stat-label">Amazing Year</span>
+            </div>
+          </div>
+
+          <div class="teaching-description">
+            <p>I taught computer science at the same school where I studied just four years earlier. I quickly became a mentor, teacher, and big brother to my students across 10th and 11th grades.</p>
+            
+            <p>Although the beginning was challenging, I developed my own teaching style and built personal connections with students. We covered the curriculum, explored enrichment topics, solved puzzles, and discussed life beyond the classroom.</p>
+            
+            <p>This experience taught me that even one year of teaching can leave a lasting impact. I look forward to returning to education in the future, and inspiring others to join the mission of improving education in Israel.</p>
+          </div>
+
+          <div class="teaching-highlights">
+            <div class="highlight">
+              <i class="fas fa-lightbulb"></i>
+              <span>Creative Problem Solving</span>
+            </div>
+            <div class="highlight">
+              <i class="fas fa-users"></i>
+              <span>Personal Mentorship</span>
+            </div>
+            <div class="highlight">
+              <i class="fas fa-puzzle-piece"></i>
+              <span>Interactive Learning</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="contact" class="fade-in">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-content">
-      <p>I’m happy to connect about interesting projects, teaching, or collaborations. Feel free to reach out.</p>
-      <form class="contact-form">
-        <div class="form-group"><input type="text" id="name" required><label for="name">Your Name</label></div>
-        <div class="form-group"><input type="email" id="email" required><label for="email">Email Address</label></div>
-        <div class="form-group"><textarea id="message" rows="5" required></textarea><label for="message">Message</label></div>
-        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
-      </form>
+    <div class="contact-simple">
+      <h2 class="section-title">Get In Touch</h2>
+      <p>Ready to collaborate on something amazing?</p>
+      <a href="mailto:nadavhalahmi560@gmail.com" class="contact-email">
+        <i class="fas fa-envelope"></i>
+        <span>nadavhalahmi560@gmail.com</span>
+      </a>
       <div class="social-links">
-        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:nadavhalahmi560@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/nadavhalahmi" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://gitlab.com/nadavhalahmi" target="_blank" class="social-link">
+          <i class="fab fa-gitlab"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/nadav-halahmi-63a455215/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
     </div>
   </section>
