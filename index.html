@@ -10,12 +10,12 @@
 <body>
   <nav>
     <div class="nav-container">
-      <div class="logo">Nadav</div>
+      <div class="logo">Nadav Halahmi</div>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#apps">Apps</a></li>
-        <!-- <li><a href="#projects">Projects</a></li> -->
+        <li><a href="#competitions">Competitions</a></li>
         <li><a href="#teaching">Teaching</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -25,13 +25,16 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Nadav Halahmi</h1>
-      <p class="subtitle">Software Engineer • Cybersecurity • Educator</p>
+      <p class="subtitle">Software Engineer • Game Designer • Educator</p>
       <p class="description">
-        I specialize in building robust applications, teaching computer science, and reverse engineering complex systems.
+        I solve real-world problems and build ideas from the ground up. From physics algorithms to strategy games to educational tools — I turn vision into reality.
       </p>
       <div class="cta-buttons">
         <a href="#apps" class="btn btn-primary"><i class="fas fa-mobile-alt"></i>View My Apps</a>
         <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i>Get In Touch</a>
+        <a href="pdfs/Nadav_Halahmi-CV.pdf" class="btn btn-secondary" target="_blank" download>
+  <i class="fas fa-file-pdf"></i>Download CV
+</a>
       </div>
     </div>
   </section>
@@ -41,15 +44,16 @@
     <div class="about-content">
       <div class="about-image"><img src="images/aboutme.jpg" alt="About me" /></div>
       <div class="about-text">
-        <p>I'm a software engineer with experience in performance optimization, reverse engineering, and education. I enjoy building tools, teaching students, and simplifying complexity.</p>
+        <p>I'm a software engineer who loves solving real-world problems and bringing ideas to life from the ground up. Whether it's calculating cyclist power through physics algorithms, designing a strategic board game from scratch, or building a vocabulary app that adapts to each learner, I thrive on turning vision into reality.</p>
+        <p>My journey started in high school with computational projects that tackled real challenges for cyclists, continued through computer science at the Technion, and now includes game design, app development, and education. I believe the best solutions come from understanding problems deeply and building everything yourself—from concept to execution.</p>
         <div class="skills">
           <span class="skill-tag">Python</span>
           <span class="skill-tag">C++</span>
-          <span class="skill-tag">Fortran</span>
+          <span class="skill-tag">C#</span>
           <span class="skill-tag">Flutter</span>
-          <span class="skill-tag">Smali</span>
           <span class="skill-tag">Unity</span>
-          <span class="skill-tag">OpenMP</span>
+          <span class="skill-tag">Game Design</span>
+          <span class="skill-tag">Education</span>
         </div>
       </div>
     </div>
@@ -79,56 +83,100 @@
     </div>
   </section>
 
-  <!-- <section id="projects" class="fade-in">
-    <h2 class="section-title">Other Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-icon">
-          <i class="fas fa-bicycle"></i>
+  <section id="competitions" class="fade-in">
+    <h2 class="section-title">Competitions & Awards</h2>
+    
+    <div class="achievements-grid" style="margin-bottom: 3rem;">
+      <div class="achievement-card">
+        <div class="achievement-image-small">
+          <img src="images/final-award-ceremony.jpg" alt="Final Award Ceremony" />
+          <!-- Place your Final Award ceremony image here -->
         </div>
-        <h3>Power Meter for Cyclists</h3>
-        <p>Hardware/software integration to estimate real-time cycling power. Winner of a national excellence award.</p>
-        <div class="project-tech">
-          <span class="tech-tag">C++</span>
-          <span class="tech-tag">Hardware</span>
-          <span class="tech-tag">IoT</span>
-        </div>
-        <a href="https://github.com/nadavhalahmi/moah-project-yud/tree/main" class="project-link" target="_blank">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
+        <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Final Award</h3>
+        <p class="achievement-meta">Technion & National Recognition • 2020</p>
+        <p>Awarded annually to only 5 top computer science students nationwide for academic excellence and contribution to the field.</p>
+        <a href="https://www.final.co.il/culture/" class="achievement-link" target="_blank">Learn more about Final Award <i class="fas fa-external-link-alt"></i></a>
       </div>
-      <div class="project-card">
-        <div class="project-icon">
-          <i class="fas fa-mobile-alt"></i>
+      
+      <div class="achievement-card">
+        <div class="achievement-image-small">
+          <img src="images/technion-graduation.jpg" alt="Technion Graduation" />
+          <!-- Place your Technion graduation image here -->
         </div>
-        <h3>Cyclist speed in downheel research</h3>
-        <p>A Python-based tool for reverse engineering and analyzing Android APKs statically, using Smali and IDA.</p>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Smali</span>
-          <span class="tech-tag">Reverse Engineering</span>
-        </div>
-        <a href="https://github.com/nadavhalahmi/moah-project-yud_aleph" class="project-link" target="_blank">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <h3>Realtime UDP Testing Lab</h3>
-        <p>Custom networking sandbox to simulate NAT and UDP device discovery without a VPN using iptables and tc.</p>
-        <div class="project-tech">
-          <span class="tech-tag">Networking</span>
-          <span class="tech-tag">UDP</span>
-          <span class="tech-tag">Linux</span>
-        </div>
-        <a href="https://github.com/nadavhalahmi/udp-testing-lab" class="project-link" target="_blank">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
+        <div class="achievement-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Graduated with Distinction</h3>
+        <p class="achievement-meta">Technion • GPA 91/100</p>
+        <p>B.Sc. in Software Engineering with multiple President's and Dean's honors. 2nd place in Multi-Agent Search Competition (AI course).</p>
       </div>
     </div>
-  </section> -->
+
+    <h3 style="font-size: 2rem; text-align: center; margin-bottom: 2rem; color: var(--text-primary);">Competition Projects</h3>
+    <div class="competitions-grid">
+      
+      <div class="competition-card">
+        <div class="competition-image">
+          <img src="images/power-meter-project.jpg" alt="Power Meter Project" />
+          <!-- Place your power meter competition image here -->
+          <span class="competition-badge">1st Place</span>
+        </div>
+        <div class="competition-content">
+          <h3>Power Meter for Cyclists</h3>
+          <p class="competition-year">Schwartz-Reisman Competition • 2015</p>
+          <p>Developed a computational system to measure real-time cycling power by analyzing resistance forces (gravity, air drag, friction, acceleration) and velocity. Implemented physics-based algorithms using Newton's laws to calculate power output without expensive commercial power meters ($2000+).</p>
+          <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Physics</span>
+            <span class="skill-tag">Least Squares</span>
+            <span class="skill-tag">Drag Equation</span>
+          </div>
+          <div class="competition-links">
+            <a href="https://github.com/nadavhalahmi/moah-project-yud/tree/main" class="btn btn-secondary" target="_blank">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="pdfs/power-meter-paper.pdf" class="btn btn-secondary" target="_blank" download>
+              <i class="fas fa-file-pdf"></i> Download Paper
+            </a>
+          </div>
+          <a href="https://info.hemda.org.il/template/default.aspx?maincat=21&catId=129&PageId=1250&siteId=0" class="competition-info-link" target="_blank">
+            Competition Details <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="competition-card">
+        <div class="competition-image">
+          <img src="images/downhill-speed-project.jpg" alt="Downhill Speed Research" />
+          <!-- Place your downhill speed competition image here -->
+          <span class="competition-badge">2nd Place</span>
+        </div>
+        <div class="competition-content">
+          <h3>Cyclist Speed in Downhill Research</h3>
+          <p class="competition-year">Schwartz-Reisman Competition • 2016</p>
+          <p>Continuation project analyzing cyclist performance dynamics in downhill scenarios. Advanced data collection, analysis methodologies, and real-world testing.</p>
+          <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Physics</span>
+            <span class="skill-tag">Numpy</span>
+            <span class="skill-tag">Differential Equations</span>
+            <span class="skill-tag">Euler method</span>
+          </div>
+          <div class="competition-links">
+            <a href="https://github.com/nadavhalahmi/moah-project-yud_aleph" class="btn btn-secondary" target="_blank">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="pdfs/downhill-speed-paper.pdf" class="btn btn-secondary" target="_blank" download>
+              <i class="fas fa-file-pdf"></i> Download Paper
+            </a>
+          </div>
+          <a href="https://info.hemda.org.il/template/default.aspx?maincat=21&catId=129&pageId=1275" class="competition-info-link" target="_blank">
+            Competition Details <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <section id="teaching" class="fade-in">
     <h2 class="section-title">Teaching</h2>
@@ -143,7 +191,7 @@
         </div>
         <div class="teaching-content">
           <h3>Computer Science Teacher</h3>
-          <p class="teaching-school">Ironi Yud-Daled High School, Tel Aviv</p>
+          <p class="teaching-school">Ironi Yud-Dalet High School, Tel Aviv</p>
           
           <div class="teaching-stats">
             <div class="stat">
@@ -184,25 +232,37 @@
           </div>
         </div>
       </div>
+
+      <div class="teaching-extra">
+        <div class="extra-teaching-card">
+          <div class="extra-icon"><i class="fas fa-university"></i></div>
+          <div class="extra-content">
+            <h4>Course Creator & Lecturer</h4>
+            <p class="extra-org">Youth Science, Hebrew University</p>
+            <p class="extra-date">2022 – 2023</p>
+            <p>Designed and delivered cybersecurity curriculum for advanced high school students, covering topics from network security to reverse engineering.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="fade-in">
     <div class="contact-simple">
-      <h2 class="section-title">Get In Touch</h2>
-      <p>Ready to collaborate on something amazing?</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p>Interested in my projects or want to collaborate? Feel free to reach out!</p>
       <a href="mailto:nadavhalahmi560@gmail.com" class="contact-email">
         <i class="fas fa-envelope"></i>
         <span>nadavhalahmi560@gmail.com</span>
       </a>
       <div class="social-links">
-        <a href="https://github.com/nadavhalahmi" target="_blank" class="social-link">
+        <a href="https://github.com/nadavhalahmi" target="_blank" class="social-link" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://gitlab.com/nadavhalahmi" target="_blank" class="social-link">
+        <a href="https://gitlab.com/nadavhalahmi" target="_blank" class="social-link" title="GitLab">
           <i class="fab fa-gitlab"></i>
         </a>
-        <a href="https://www.linkedin.com/in/nadav-halahmi-63a455215/" target="_blank" class="social-link">
+        <a href="https://www.linkedin.com/in/nadav-halahmi-63a455215/" target="_blank" class="social-link" title="LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
