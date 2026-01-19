@@ -659,7 +659,6 @@ section {
     border-radius: 24px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -676,12 +675,6 @@ section {
     z-index: 10;
 }
 
-.app-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-    border-color: rgba(99, 102, 241, 0.4);
-}
-
 .screenshot-container {
     padding: 2rem 2rem 1rem;
     background: rgba(15, 23, 42, 0.3);
@@ -696,34 +689,13 @@ section {
     width: 100%;
     max-width: 260px;
     margin: 0 auto;
-    border: 8px solid #1e293b;
-    border-radius: 36px;
+    border: 10px solid #1e293b;
+    border-radius: 40px;
     padding: 0;
     background: #000;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     aspect-ratio: 9/19;
-}
-
-/* Glass reflection */
-.device-mockup::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(255, 255, 255, 0.1),
-            transparent);
-    transition: all 0.8s ease;
-    z-index: 6;
-    pointer-events: none;
-}
-
-.app-card:hover .device-mockup::before {
-    left: 150%;
 }
 
 /* Top Notch */
@@ -733,12 +705,25 @@ section {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 40%;
-    height: 18px;
+    width: 45%;
+    height: 22px;
     background: #1e293b;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    z-index: 7;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 20;
+}
+
+/* Home Indicator */
+.home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: 20;
 }
 
 .app-screenshot {
@@ -750,75 +735,72 @@ section {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    transition: transform 0.5s ease;
 }
 
-.app-card:hover .app-screenshot {
-    transform: scale(1.05);
-}
+/* No zoom effect */
 
-/* Screenshot Overlay */
+/* Simple Bottom Action Bar - Sharp and Clear */
 .screenshot-overlay {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(4px);
+    right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(15, 23, 42, 0.95) 80%);
+    padding: 1.5rem 1rem 1.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 4;
-    padding: 1.5rem;
+    z-index: 25;
 }
 
-.app-card:hover .screenshot-overlay {
-    opacity: 1;
-}
-
-/* Mobile specific - make overlay partially visible so they know it's a screenshot */
+/* Mobile specific - clean and high contrast */
 @media (max-width: 768px) {
     .screenshot-overlay {
-        opacity: 0.8;
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(2px);
+        background: linear-gradient(transparent, rgba(15, 23, 42, 0.9) 30%);
+        height: 35%;
     }
 
     .device-mockup {
         max-width: 220px;
-        border-width: 6px;
+        border-width: 8px;
     }
 }
 
 .overlay-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    width: 100%;
-    max-width: 160px;
-}
-
-.overlay-buttons .btn {
+    flex-direction: row;
+    gap: 0.8rem;
     width: 100%;
     justify-content: center;
 }
 
-.btn-glass {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
-    font-size: 0.9rem;
-    padding: 0.8rem 1rem;
+.overlay-buttons .btn {
+    flex: 1;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
-.btn-glass:hover {
-    background: var(--gradient) !important;
-    border-color: transparent !important;
+.btn-glass {
+    background: var(--primary) !important;
+    border: none !important;
+    color: white !important;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary.btn-glass {
+    background: white !important;
+    color: var(--bg-dark) !important;
 }
 
 .app-info {
