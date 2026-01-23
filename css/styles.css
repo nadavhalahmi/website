@@ -1429,3 +1429,10 @@ footer {
         font-size: 0.95rem;
     }
 }
+
+.build-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
